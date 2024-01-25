@@ -21,11 +21,11 @@ lint:
   enabled:
     - git-diff-check
     - markdownlint@0.38.0
-    - prettier@3.2.2
+    - prettier@3.2.4
     - terrascan@1.18.11
-    - tflint@0.50.1
+    - tflint@0.50.2
     - trivy@0.48.3
-    - trufflehog@3.63.9
+    - trufflehog@3.64.0
 actions:
   disabled:
     - trunk-announce
