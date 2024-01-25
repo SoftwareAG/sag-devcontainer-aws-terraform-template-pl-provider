@@ -12,5 +12,5 @@ terraform {
 # Supporting one region for now. TODO: check if we can generalize
 provider "aws" {
   alias  = "aws-main-region"
-  region = var.deployment_regions_list[0]
+  region = var.deployment_region
 }
