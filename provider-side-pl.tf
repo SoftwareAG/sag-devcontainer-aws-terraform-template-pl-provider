@@ -57,6 +57,7 @@ resource "aws_lb" "pl-lb" {
   # highly recommended design decision: enable access_logs. These are useful for security, monitoring and troubleshooting purposes
   access_logs {
     enabled = true
+    prefix  = "valdoridex/load-balancers/pl-lb"
     bucket  = data.aws_s3_bucket.logs_lb.id
   }
 
@@ -81,3 +82,8 @@ resource "aws_security_group" "pl-lb-sg01" {
 
   tags = merge(var.provided_meta_tags, { Name = "pl-lb-sg01" })
 }
+
+######## LB must access the S3 bucket in order to log
+
+## TODO: ensure the policies allow the load balancer to produce logs in the S3 bucket
+## WIP: (e.g. ) https://github.com/trussworks/terraform-aws-logs/

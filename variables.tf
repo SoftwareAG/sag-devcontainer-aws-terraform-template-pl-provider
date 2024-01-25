@@ -30,7 +30,7 @@ variable "provided_vpc_id" {
 
 ## What is the VPC of interest for the private link on the provider side?
 variable "provided_lb_subnet_ids" {
-  type    = list(string)
+  type = list(string)
   default = [
     "subnet-1111",
     "subnet-2222"
@@ -42,8 +42,14 @@ variable "provided_lb_subnet_ids" {
 ## We must be given an s3 bucket
 ## TODO: add an option to generate it if not given
 variable "logs_lb_bucket" {
-  type    = string
-  default = "bucket.test.com"
+  type = object({
+    name = string
+    arn  = string
+  })
+  default = {
+    name = "bucket.test.com"
+    arn  = "arn:aws:s3:::bucket.test.com"
+  }
 }
 
 variable "allowed_principals" {
